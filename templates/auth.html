@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Sign Up - FitTrack AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-body">
+
+<a href="{{ url_for('index') }}" class="logo auth-logo">Fit<span>Track</span> AI</a>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTabBtn" onclick="showAuthTab('login')">Login</button>
+      <button class="auth-tab" id="signupTabBtn" onclick="showAuthTab('signup')">Create Account</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <form id="loginForm" class="auth-form active" action="{{ url_for('login') }}" method="POST" novalidate>
+      <h2>Welcome Back</h2>
+      <div class="form-group">
+        <label for="login_email">Email</label>
+        <input type="email" id="login_email" name="email" required>
+        <span class="error-text" id="login_email_error"></span>
+      </div>
+      <div class="form-group">
+        <label for="login_password">Password</label>
+        <input type="password" id="login_password" name="password" required>
+        <span class="error-text" id="login_password_error"></span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Login</button>
+      <div class="auth-links">
+        <a href="#" onclick="showForgotPassword(event)">Forgot Password?</a>
+        <a href="#" onclick="showAuthTab('signup')">Create Account</a>
+      </div>
+    </form>
+
+    <!-- FORGOT PASSWORD FORM -->
+    <form id="forgotForm" class="auth-form" action="{{ url_for('forgot_password') }}" method="POST" novalidate>
+      <h2>Reset Password</h2>
+      <p class="form-hint">Enter your account email and we'll send reset instructions.</p>
+      <div class="form-group">
+        <label for="forgot_email">Email</label>
+        <input type="email" id="forgot_email" name="email" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">Send Reset Link</button>
+      <div class="auth-links">
+        <a href="#" onclick="showAuthTab('login')">Back to Login</a>
+      </div>
+    </form>
+
+    <!-- SIGNUP FORM -->
+    <form id="signupForm" class="auth-form" action="{{ url_for('signup') }}" method="POST" novalidate>
+      <h2>Create Your Account</h2>
+
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" required>
+        <span class="error-text" id="full_name_error"></span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="signup_email">Email</label>
+          <input type="email" id="signup_email" name="email" required>
+          <span class="error-text" id="signup_email_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="1" max="120" required>
+          <span class="error-text" id="age_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="height">Height (cm)</label>
+          <input type="number" step="0.1" id="height" name="height" required>
+          <span class="error-text" id="height_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="initial_weight">Weight (kg)</label>
+          <input type="number" step="0.1" id="initial_weight" name="initial_weight" required>
+          <span class="error-text" id="initial_weight_error"></span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="signup_password">Password</label>
+          <input type="password" id="signup_password" name="password" required>
+          <span class="error-text" id="signup_password_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password</label>
+          <input type="password" id="confirm_password" name="confirm_password" required>
+          <span class="error-text" id="confirm_password_error"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+      <div class="auth-links">
+        <a href="#" onclick="showAuthTab('login')">Already have an account? Login</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

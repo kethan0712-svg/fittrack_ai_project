@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - FitTrack AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+{% include "_sidebar.html" %}
+
+<main class="main-content">
+
+  <header class="topbar">
+    <button class="nav-toggle app-nav-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+    <h1>Dashboard</h1>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <section class="welcome-card">
+    <h2>Welcome back, {{ user.full_name }}!</h2>
+    <p>Here's a snapshot of your fitness journey today.</p>
+  </section>
+
+  <section class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Current Weight</span>
+      <span class="stat-value">{{ stats.current_weight }} <small>kg</small></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">BMI</span>
+      <span class="stat-value">{{ stats.bmi or "--" }}</span>
+      <span class="stat-sub">{{ stats.bmi_category }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Calories Consumed</span>
+      <span class="stat-value">{{ stats.calories_consumed }} <small>kcal</small></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Calories Burned</span>
+      <span class="stat-value">{{ stats.calories_burned }} <small>kcal</small></span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Today's Steps</span>
+      <span class="stat-value">{{ stats.today_steps }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Workout Minutes</span>
+      <span class="stat-value">{{ stats.workout_minutes }} <small>min</small></span>
+    </div>
+  </section>
+
+  <section class="insights-card">
+    <h3>🤖 AI Fitness Insights</h3>
+    <p class="insights-disclaimer">Automated insights based on your logged data — not medical advice.</p>
+    <ul>
+      {% for tip in insights %}
+        <li>{{ tip }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="charts-grid">
+    <div class="chart-card">
+      <h3>Weight Progress</h3>
+      <canvas id="weightChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Weekly Activity</h3>
+      <canvas id="activityChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Calories: Consumed vs Target</h3>
+      <canvas id="calorieChart"></canvas>
+    </div>
+  </section>
+
+  <section class="recent-activity">
+    <h3>Recent Activity</h3>
+    <div class="recent-grid">
+      <div class="recent-item">
+        <strong>Latest Weight</strong>
+        <p>{% if recent_weight %}{{ recent_weight.weight }} kg on {{ recent_weight.record_date }}{% else %}No entries yet{% endif %}</p>
+      </div>
+      <div class="recent-item">
+        <strong>Latest Workout</strong>
+        <p>{% if recent_workout %}{{ recent_workout.workout_type }} — {{ recent_workout.duration }} min on {{ recent_workout.workout_date }}{% else %}No entries yet{% endif %}</p>
+      </div>
+      <div class="recent-item">
+        <strong>Latest Meal</strong>
+        <p>{% if recent_meal %}{{ recent_meal.food_name }} — {{ recent_meal.calories }} kcal on {{ recent_meal.meal_date }}{% else %}No entries yet{% endif %}</p>
+      </div>
+      <div class="recent-item">
+        <strong>Latest Steps</strong>
+        <p>{% if recent_steps %}{{ recent_steps.steps }} steps on {{ recent_steps.record_date }}{% else %}No entries yet{% endif %}</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+  loadDashboardCharts();
+</script>
+</body>
+</html>

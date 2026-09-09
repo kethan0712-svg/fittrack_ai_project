@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Tracker - FitTrack AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+{% include "_sidebar.html" %}
+
+<main class="main-content">
+
+  <header class="topbar">
+    <button class="nav-toggle app-nav-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+    <h1>Fitness Tracker</h1>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showSection('bmiSection', this)">BMI Calculator</button>
+    <button class="tab-btn" onclick="showSection('weightSection', this)">Weight</button>
+    <button class="tab-btn" onclick="showSection('workoutSection', this)">Workouts</button>
+    <button class="tab-btn" onclick="showSection('stepsSection', this)">Steps</button>
+    <button class="tab-btn" onclick="showSection('goalsSection', this)">Goals</button>
+  </div>
+
+  <!-- ============== BMI CALCULATOR ============== -->
+  <section id="bmiSection" class="tracker-section active">
+    <div class="card">
+      <h3>BMI Calculator</h3>
+      <div class="bmi-calc">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bmiHeight">Height (cm)</label>
+            <input type="number" step="0.1" id="bmiHeight" value="{{ user.height }}">
+          </div>
+          <div class="form-group">
+            <label for="bmiWeight">Weight (kg)</label>
+            <input type="number" step="0.1" id="bmiWeight" value="{{ current_weight }}">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+
+        <div class="bmi-result" id="bmiResult">
+          <div class="bmi-value" id="bmiValue">--</div>
+          <div class="bmi-category" id="bmiCategory">Enter your height and weight</div>
+          <div class="bmi-scale">
+            <div class="bmi-scale-bar">
+              <span class="scale-under">Underweight</span>
+              <span class="scale-normal">Normal</span>
+              <span class="scale-over">Overweight</span>
+              <span class="scale-obese">Obesity</span>
+            </div>
+            <div class="bmi-pointer" id="bmiPointer"></div>
+          </div>
+          <p class="form-hint">BMI is a general screening measure only and is not a medical diagnosis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WEIGHT TRACKER ============== -->
+  <section id="weightSection" class="tracker-section">
+    <div class="summary-row">
+      <div class="summary-box"><span>Starting Weight</span><strong>{{ starting_weight }} kg</strong></div>
+      <div class="summary-box"><span>Current Weight</span><strong>{{ current_weight }} kg</strong></div>
+      <div class="summary-box"><span>Change</span><strong class="{{ 'text-good' if weight_change <= 0 else 'text-bad' }}">{{ weight_change }} kg</strong></div>
+    </div>
+
+    <div class="card">
+      <h3>Add Weight Entry</h3>
+      <form action="{{ url_for('add_weight') }}" method="POST" class="inline-form">
+        <input type="number" step="0.1" name="weight" placeholder="Weight (kg)" required min="1">
+        <input type="date" name="record_date" required>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Weight History</h3>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Weight (kg)</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for w in weights %}
+          <tr>
+            <td>
+              <form action="{{ url_for('edit_weight', record_id=w.id) }}" method="POST" class="row-form">
+                <input type="date" name="record_date" value="{{ w.record_date }}">
+            </td>
+            <td>
+                <input type="number" step="0.1" name="weight" value="{{ w.weight }}">
+            </td>
+            <td class="actions-cell">
+                <button type="submit" class="btn-icon" title="Save">💾</button>
+              </form>
+              <form action="{{ url_for('delete_weight', record_id=w.id) }}" method="POST" class="row-form" onsubmit="return confirmDelete('weight entry')">
+                <button type="submit" class="btn-icon" title="Delete">🗑️</button>
+              </form>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="3" class="empty-row">No weight entries yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============== WORKOUT TRACKER ============== -->
+  <section id="workoutSection" class="tracker-section">
+    <div class="card">
+      <h3>Add Workout</h3>
+      <form action="{{ url_for('add_workout') }}" method="POST" class="inline-form">
+        <select name="workout_type" required>
+          <option value="">Type</option>
+          <option>Walking</option><option>Running</option><option>Cycling</option>
+          <option>Strength Training</option><option>Cardio</option><option>Gym</option>
+          <option>Yoga</option><option>Other</option>
+        </select>
+        <input type="number" name="duration" placeholder="Duration (min)" required min="1">
+        <input type="number" name="calories_burned" placeholder="Calories burned" required min="0">
+        <input type="date" name="workout_date" required>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Workout History</h3>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Type</th><th>Duration</th><th>Calories</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for w in workouts %}
+          <tr>
+            <form action="{{ url_for('edit_workout', record_id=w.id) }}" method="POST" class="row-form-inline">
+            <td><input type="date" name="workout_date" value="{{ w.workout_date }}"></td>
+            <td>
+              <select name="workout_type">
+                {% for t in ['Walking','Running','Cycling','Strength Training','Cardio','Gym','Yoga','Other'] %}
+                <option {{ 'selected' if w.workout_type == t }}>{{ t }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td><input type="number" name="duration" value="{{ w.duration }}" class="short-input"></td>
+            <td><input type="number" name="calories_burned" value="{{ w.calories_burned }}" class="short-input"></td>
+            <td class="actions-cell">
+              <button type="submit" class="btn-icon" title="Save">💾</button>
+            </form>
+            <form action="{{ url_for('delete_workout', record_id=w.id) }}" method="POST" onsubmit="return confirmDelete('workout')">
+              <button type="submit" class="btn-icon" title="Delete">🗑️</button>
+            </form>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="empty-row">No workouts logged yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============== STEP TRACKER ============== -->
+  <section id="stepsSection" class="tracker-section">
+    <div class="summary-row">
+      <div class="summary-box"><span>Today's Steps</span><strong>{{ today_steps }}</strong></div>
+      <div class="summary-box"><span>Weekly Steps</span><strong>{{ weekly_steps }}</strong></div>
+      <div class="summary-box"><span>Total Steps</span><strong>{{ total_steps }}</strong></div>
+    </div>
+
+    <div class="card">
+      <h3>Daily Step Goal Progress</h3>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width: {{ [ (today_steps / step_goal * 100) | round(0, 'floor'), 100] | min }}%"></div>
+      </div>
+      <p class="form-hint">{{ today_steps }} / {{ step_goal }} steps today</p>
+    </div>
+
+    <div class="card">
+      <h3>Log Steps</h3>
+      <form action="{{ url_for('add_steps') }}" method="POST" class="inline-form">
+        <input type="number" name="steps" placeholder="Steps" required min="0">
+        <input type="number" step="0.01" name="distance" placeholder="Distance (km)">
+        <input type="number" name="calories_burned" placeholder="Calories burned">
+        <input type="date" name="record_date" required>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Step History</h3>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Steps</th><th>Distance (km)</th><th>Calories</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for s in steps %}
+          <tr>
+            <td>{{ s.record_date }}</td>
+            <td>{{ s.steps }}</td>
+            <td>{{ s.distance }}</td>
+            <td>{{ s.calories_burned }}</td>
+            <td class="actions-cell">
+              <form action="{{ url_for('delete_steps', record_id=s.id) }}" method="POST" onsubmit="return confirmDelete('step entry')">
+                <button type="submit" class="btn-icon" title="Delete">🗑️</button>
+              </form>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="empty-row">No step entries yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============== FITNESS GOALS ============== -->
+  <section id="goalsSection" class="tracker-section">
+    <div class="card">
+      <h3>Create Goal</h3>
+      <form action="{{ url_for('add_goal') }}" method="POST" class="inline-form">
+        <select name="goal_type" required>
+          <option value="">Goal Type</option>
+          <option>Weight Loss</option><option>Weight Gain</option>
+          <option>Muscle Building</option><option>Daily Steps</option><option>Workout Minutes</option>
+        </select>
+        <input type="number" step="0.1" name="target_value" placeholder="Target value" required min="0.1">
+        <input type="number" step="0.1" name="current_value" placeholder="Current value" value="0">
+        <input type="date" name="target_date">
+        <button type="submit" class="btn btn-primary">Add Goal</button>
+      </form>
+    </div>
+
+    <div class="goals-grid">
+      {% for g in goals %}
+      <div class="card goal-card">
+        <div class="goal-header">
+          <h4>{{ g.goal_type }}</h4>
+          <span class="goal-status status-{{ g.status|lower }}">{{ g.status }}</span>
+        </div>
+        <p>Target: {{ g.target_value }} • Current: {{ g.current_value }}</p>
+        {% if g.target_date %}<p class="form-hint">By {{ g.target_date }}</p>{% endif %}
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width: {{ g.progress_pct }}%"></div>
+        </div>
+        <p class="form-hint">{{ g.progress_pct }}% complete</p>
+
+        <form action="{{ url_for('edit_goal', record_id=g.id) }}" method="POST" class="inline-form goal-update-form">
+          <input type="number" step="0.1" name="current_value" value="{{ g.current_value }}" class="short-input">
+          <select name="status">
+            <option {{ 'selected' if g.status == 'Active' }}>Active</option>
+            <option {{ 'selected' if g.status == 'Completed' }}>Completed</option>
+          </select>
+          <button type="submit" class="btn btn-secondary btn-small">Update</button>
+        </form>
+        <form action="{{ url_for('delete_goal', record_id=g.id) }}" method="POST" onsubmit="return confirmDelete('goal')">
+          <button type="submit" class="btn btn-danger btn-small">Delete Goal</button>
+        </form>
+      </div>
+      {% else %}
+      <p class="empty-row">No goals set yet. Create one above!</p>
+      {% endfor %}
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

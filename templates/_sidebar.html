@@ -1,0 +1,9 @@
+<aside class="sidebar" id="sidebar">
+  <a href="{{ url_for('index') }}" class="logo sidebar-logo">Fit<span>Track</span> AI</a>
+  <nav class="sidebar-nav">
+    <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.path == url_for('dashboard') }}">📊 Dashboard</a>
+    <a href="{{ url_for('fitness') }}" class="{{ 'active' if request.path == url_for('fitness') }}">🏋️ Fitness Tracker</a>
+    <a href="{{ url_for('diet_profile') }}" class="{{ 'active' if request.path == url_for('diet_profile') }}">🥗 Diet & Profile</a>
+    <a href="{{ url_for('logout') }}" class="logout-link">🚪 Logout</a>
+  </nav>
+</aside>

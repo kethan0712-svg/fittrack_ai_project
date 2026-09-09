@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diet & Profile - FitTrack AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+{% include "_sidebar.html" %}
+
+<main class="main-content">
+
+  <header class="topbar">
+    <button class="nav-toggle app-nav-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+    <h1>Diet & Profile</h1>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showSection('dietSection', this)">Diet Tracker</button>
+    <button class="tab-btn" onclick="showSection('profileSection', this)">Profile</button>
+  </div>
+
+  <!-- ============== DIET TRACKER ============== -->
+  <section id="dietSection" class="tracker-section active">
+    <div class="card calorie-summary">
+      <div class="calorie-ring" style="--pct: {{ (today_total / target * 100) if target else 0 }}%">
+        <span>{{ today_total }} / {{ target }}</span>
+      </div>
+      <div class="calorie-figures">
+        <div><span>Daily Target</span><strong>{{ target }} kcal</strong></div>
+        <div><span>Consumed</span><strong>{{ today_total }} kcal</strong></div>
+        <div><span>Remaining</span><strong>{{ remaining }} kcal</strong></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Add Meal</h3>
+      <form action="{{ url_for('add_meal') }}" method="POST" class="inline-form">
+        <input type="text" name="food_name" placeholder="Food name" required>
+        <input type="number" name="calories" placeholder="Calories" required min="0">
+        <select name="meal_type" required>
+          <option value="">Meal Type</option>
+          <option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snacks</option>
+        </select>
+        <input type="date" name="meal_date" required>
+        <button type="submit" class="btn btn-primary">Add Meal</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Meal History</h3>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Food</th><th>Type</th><th>Calories</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for m in meals %}
+          <tr>
+            <form action="{{ url_for('edit_meal', record_id=m.id) }}" method="POST" class="row-form-inline">
+            <td><input type="date" name="meal_date" value="{{ m.meal_date }}"></td>
+            <td><input type="text" name="food_name" value="{{ m.food_name }}"></td>
+            <td>
+              <select name="meal_type">
+                {% for t in ['Breakfast','Lunch','Dinner','Snacks'] %}
+                <option {{ 'selected' if m.meal_type == t }}>{{ t }}</option>
+                {% endfor %}
+              </select>
+            </td>
+            <td><input type="number" name="calories" value="{{ m.calories }}" class="short-input"></td>
+            <td class="actions-cell">
+              <button type="submit" class="btn-icon" title="Save">💾</button>
+            </form>
+            <form action="{{ url_for('delete_meal', record_id=m.id) }}" method="POST" onsubmit="return confirmDelete('meal')">
+              <button type="submit" class="btn-icon" title="Delete">🗑️</button>
+            </form>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="empty-row">No meals logged yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============== PROFILE ============== -->
+  <section id="profileSection" class="tracker-section">
+    <div class="card profile-card">
+      <h3>Your Profile</h3>
+      <form action="{{ url_for('update_profile') }}" method="POST" class="profile-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="full_name" value="{{ user.full_name }}" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" value="{{ user.email }}" disabled>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" value="{{ user.phone or '' }}">
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" value="{{ user.age }}" required min="1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Gender</label>
+            <select name="gender" required>
+              <option {{ 'selected' if user.gender == 'Male' }}>Male</option>
+              <option {{ 'selected' if user.gender == 'Female' }}>Female</option>
+              <option {{ 'selected' if user.gender == 'Other' }}>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Height (cm)</label>
+            <input type="number" step="0.1" name="height" value="{{ user.height }}" required min="1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Current Weight (kg)</label>
+            <input type="text" value="{{ current_weight if current_weight is defined else user.initial_weight }}" disabled>
+          </div>
+          <div class="form-group">
+            <label>Member Since</label>
+            <input type="text" value="{{ user.created_at }}" disabled>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
