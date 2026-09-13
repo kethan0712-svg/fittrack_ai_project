@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bmi.css') }}">
+</head>
+<body>
+
+
+{% include "_sidebar.html" %}
+
+<main class="main-content">
+
+  <header class="topbar">
+    <button class="nav-toggle app-nav-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+    <h1>Diet & Profile</h1>
+
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+
+      <!-- ============== BMI CALCULATOR ============== -->
+
+  <section id="bmiSection" class="tracker-section active">
+    <div class="card">
+      <h3>BMI Calculator</h3>
+      <div class="bmi-calc">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bmiHeight">Height (cm)</label>
+            <input type="number" step="0.1" id="bmiHeight" value="{{ user.height }}">
+          </div>
+          <div class="form-group">
+            <label for="bmiWeight">Weight (kg)</label>
+            <input type="number" step="0.1" id="bmiWeight" value="{{ current_weight }}">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+
+        <div class="bmi-result" id="bmiResult">
+          <div class="bmi-value" id="bmiValue">--</div>
+          <div class="bmi-category" id="bmiCategory">Enter your height and weight</div>
+          <div class="bmi-scale">
+            <div class="bmi-scale-bar">
+              <span class="scale-under">Underweight</span>
+              <span class="scale-normal">Normal</span>
+              <span class="scale-over">Overweight</span>
+              <span class="scale-obese">Obesity</span>
+            </div>
+            <div class="bmi-pointer" id="bmiPointer"></div>
+          </div>
+          <p class="form-hint">BMI is a general screening measure only and is not a medical diagnosis.</p>
+        </div>
+      </div>
+    </div>
+  </section>    
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -260,7 +260,7 @@ input.invalid, select.invalid { border-color: var(--danger); }
 .bmi-value { font-size: 3rem; font-weight: 800; color: var(--primary-dark); }
 .bmi-category { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.2rem; }
 .bmi-scale-bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; font-size: 0.65rem; }
-.bmi-scale-bar span { display: flex; align-items: center; justify-content: center; color: transparent; }
+.bmi-scale-bar span { display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
 .scale-under { background: #93c5fd; flex: 1.5; }
 .scale-normal { background: #86efac; flex: 2; }
 .scale-over { background: #fde68a; flex: 1.5; }

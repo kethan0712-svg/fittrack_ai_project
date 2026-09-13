@@ -4,6 +4,7 @@
     <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.path == url_for('dashboard') }}">📊 Dashboard</a>
     <a href="{{ url_for('fitness') }}" class="{{ 'active' if request.path == url_for('fitness') }}">🏋️ Fitness Tracker</a>
     <a href="{{ url_for('diet_profile') }}" class="{{ 'active' if request.path == url_for('diet_profile') }}">🥗 Diet & Profile</a>
+    <a href="{{ url_for('bmi')  }}" class="{{ 'active' if request.path == url_for('bmi') }}">⚖ BMI Tracker</a>
     <a href="{{ url_for('logout') }}" class="logout-link">🚪 Logout</a>
   </nav>
 </aside>

@@ -161,6 +161,14 @@ def index():
 def auth():
     return render_template("auth.html")
 
+@app.route('/bmi')
+@login_required
+def bmi():
+    user_id = session["user_id"]
+
+    user = run_query("select * from users where id = %s",(user_id,), fetch="one")
+    return render_template('bmi.html',user=user)
+
 
 @app.route("/dashboard")
 @login_required
