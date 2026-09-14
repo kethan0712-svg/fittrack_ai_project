@@ -64,7 +64,7 @@ img { max-width: 100%; }
   position: sticky; top: 0; z-index: 100;
   background: var(--bg);
   box-shadow: var(--shadow);
-  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .nav-container {
   max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
@@ -78,7 +78,7 @@ img { max-width: 100%; }
 
 /* ============ HERO ============ */
 .hero {
-  background: linear-gradient(135deg, var(--primary-light), #ffffff);
+  background: linear-gradient(var(--card-bg));
   padding: 6rem 1.5rem;
   text-align: center;
 }
@@ -103,11 +103,11 @@ img { max-width: 100%; }
 .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
 
 /* ============ ABOUT ============ */
-.about { background: #fff; padding: 3rem 1.5rem; text-align: center; }
+.about { background: var(--card-bg); padding: 3rem 1.5rem; text-align: center; }
 .about-text { max-width: 780px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem; }
 
 /* ============ FOOTER ============ */
-.footer { background: var(--text-dark); color: #d1d5db; padding: 3rem 1.5rem 1.2rem; }
+.footer { background: var(--bg); color: #d1d5db; border-top: 1px solid var(--border); padding: 3rem 1.5rem 1.2rem; }
 .footer-container {
   max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;
   flex-wrap: wrap; gap: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #374151;
@@ -118,11 +118,11 @@ img { max-width: 100%; }
 .footer-copy { text-align: center; padding-top: 1.2rem; font-size: 0.85rem; color: #9ca3af; }
 
 /* ============ AUTH PAGE ============ */
-.auth-body { background: var(--primary-light); min-height: 100vh; }
+.auth-body { background: var(--bg); min-height: 100vh; }
 .auth-logo { display: block; text-align: center; padding: 1.5rem 0 0; }
 .auth-wrapper { display: flex; justify-content: center; padding: 2rem 1rem 4rem; }
 .auth-card {
-  background: #fff; width: 100%; max-width: 460px; border-radius: var(--radius);
+  background: var(--card-bg); width: 100%; max-width: 460px; border-radius: var(--radius);
   box-shadow: var(--shadow-hover); padding: 2rem;
 }
 .auth-tabs { display: flex; margin-bottom: 1.5rem; border-radius: 999px; background: var(--bg); padding: 0.3rem; }
