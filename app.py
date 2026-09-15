@@ -170,6 +170,15 @@ def bmi():
     return render_template('bmi.html',user=user)
 
 
+@app.route('/nearby_gym')
+@login_required
+def nearby_gym():
+    user_id = session["user_id"]
+
+    user = run_query("select * from users where id = %s",(user_id,), fetch="one")
+    return render_template('nearby_gym.html',user=user)
+
+
 @app.route("/dashboard")
 @login_required
 def dashboard():
