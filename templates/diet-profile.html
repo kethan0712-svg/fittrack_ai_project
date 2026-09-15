@@ -46,6 +46,116 @@
       </div>
     </div>
 
+
+<!-- ============== QUICK ADD MEALS ============== -->
+
+<div class="card quick-add-card">
+
+    <div class="quick-add-header">
+        <div>
+            <h3>✨ Quick Add Healthy Meals</h3>
+            <p>Quickly add common meals to your diet tracker</p>
+        </div>
+    </div>
+
+    <div class="quick-meals">
+
+        <!-- Breakfast -->
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Oatmeal & Banana Smoothie', 380, 'Breakfast')">
+            <span class="meal-icon">🥣</span>
+            <div>
+                <strong>Oatmeal & Banana Smoothie</strong>
+                <small>Breakfast • 380 kcal</small>
+            </div>
+        </button>
+
+
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Avocado Toast with Egg', 320, 'Breakfast')">
+            <span class="meal-icon">🥑</span>
+            <div>
+                <strong>Avocado Toast with Egg</strong>
+                <small>Breakfast • 320 kcal</small>
+            </div>
+        </button>
+
+
+        <!-- Lunch -->
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Grilled Chicken & Rice Bowl', 620, 'Lunch')">
+            <span class="meal-icon">🍗</span>
+            <div>
+                <strong>Grilled Chicken & Rice Bowl</strong>
+                <small>Lunch • 620 kcal</small>
+            </div>
+        </button>
+
+
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Tuna Salad Wrap', 450, 'Lunch')">
+            <span class="meal-icon">🌯</span>
+            <div>
+                <strong>Tuna Salad Wrap</strong>
+                <small>Lunch • 450 kcal</small>
+            </div>
+        </button>
+
+
+        <!-- Snacks -->
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Greek Yogurt & Honey Nut', 220, 'Snacks')">
+            <span class="meal-icon">🥛</span>
+            <div>
+                <strong>Greek Yogurt & Honey Nut</strong>
+                <small>Snacks • 220 kcal</small>
+            </div>
+        </button>
+
+
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Whey Protein Shake', 160, 'Snacks')">
+            <span class="meal-icon">🥤</span>
+            <div>
+                <strong>Whey Protein Shake</strong>
+                <small>Snacks • 160 kcal</small>
+            </div>
+        </button>
+
+
+        <!-- Dinner -->
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Steak & Sweet Potato', 680, 'Dinner')">
+            <span class="meal-icon">🥩</span>
+            <div>
+                <strong>Steak & Sweet Potato</strong>
+                <small>Dinner • 680 kcal</small>
+            </div>
+        </button>
+
+
+        <button type="button"
+                class="quick-meal"
+                onclick="quickAddMeal('Baked Tofu & Quinoa Veggies', 490, 'Dinner')">
+            <span class="meal-icon">🥗</span>
+            <div>
+                <strong>Baked Tofu & Quinoa Veggies</strong>
+                <small>Dinner • 490 kcal</small>
+            </div>
+        </button>
+
+    </div>
+
+</div>
+
+
     <div class="card">
       <h3>Add Meal</h3>
       <form action="{{ url_for('add_meal') }}" method="POST" class="inline-form">
@@ -151,5 +261,57 @@
 </main>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+function quickAddMeal(foodName, calories, mealType) {
+
+    // Create a temporary form
+    const form = document.createElement("form");
+
+    form.method = "POST";
+    form.action = "{{ url_for('add_meal') }}";
+
+    // Food name
+    const foodInput = document.createElement("input");
+    foodInput.type = "hidden";
+    foodInput.name = "food_name";
+    foodInput.value = foodName;
+
+    // Calories
+    const calorieInput = document.createElement("input");
+    calorieInput.type = "hidden";
+    calorieInput.name = "calories";
+    calorieInput.value = calories;
+
+    // Meal type
+    const typeInput = document.createElement("input");
+    typeInput.type = "hidden";
+    typeInput.name = "meal_type";
+    typeInput.value = mealType;
+
+    // Today's date
+    const dateInput = document.createElement("input");
+    dateInput.type = "hidden";
+    dateInput.name = "meal_date";
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    dateInput.value = `${year}-${month}-${day}`;
+
+    // Add inputs to form
+    form.appendChild(foodInput);
+    form.appendChild(calorieInput);
+    form.appendChild(typeInput);
+    form.appendChild(dateInput);
+
+    // Submit to Flask
+    document.body.appendChild(form);
+
+    form.submit();
+}
+</script>
 </body>
 </html>

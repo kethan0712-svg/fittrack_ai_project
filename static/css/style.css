@@ -256,6 +256,111 @@ input.invalid, select.invalid { border-color: var(--danger); }
 .actions-cell { display: flex; gap: 0.3rem; align-items: center; white-space: nowrap; }
 .empty-row { text-align: center; color: var(--text-muted); padding: 1.2rem !important; }
 
+
+/* =========================================
+   QUICK ADD HEALTHY MEALS
+========================================= */
+
+.quick-add-card {
+    margin-bottom: 20px;
+}
+
+.quick-add-header h3 {
+    margin-bottom: 5px;
+}
+
+.quick-add-header p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.quick-meals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.quick-meal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px;
+
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.quick-meal:hover {
+    border-color: #10b981;
+    background: #ecfdf5;
+    transform: translateY(-2px);
+}
+
+.meal-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    border-radius: 10px;
+
+    font-size: 22px;
+
+    flex-shrink: 0;
+}
+
+.quick-meal strong {
+    display: block;
+
+    font-size: 12px;
+    color: #1e293b;
+
+    margin-bottom: 5px;
+}
+
+.quick-meal small {
+    display: block;
+
+    font-size: 10px;
+    color: #64748b;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+
+    .quick-meals {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .quick-meals {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+
 /* BMI */
 .bmi-result { margin-top: 1.5rem; text-align: center; }
 .bmi-value { font-size: 3rem; font-weight: 800; color: var(--primary-dark); }
