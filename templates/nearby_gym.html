@@ -1,64 +1,545 @@
-<html lang="en" class="dark"><head>
-    <meta charset="UTF-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=f3cbb458-e429-4dcf-9942-7234ced8acaa
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
-<meta name="hosting-provider" content="Netlify">
-<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=f3cbb458-e429-4dcf-9942-7234ced8acaa">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2322C55E'&gt;&lt;path d='M13.5 2c-1.9 0-3.6.8-4.7 2.2C7.7 2.8 6 2 4.1 2 1.8 2 0 3.8 0 6.1c0 4.2 7.1 9.9 8.3 10.9l.5.4.5-.4c1.2-1 8.3-6.7 8.3-10.9C17.6 3.8 15.8 2 13.5 2z'/&gt;&lt;/svg&gt;">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitTrack AI – Smart Fitness &amp; Wellness Tracker</title>
-    <meta name="description" content="Transform your health with FitTrack AI. Track workouts, daily steps, water intake, calories, BMI, and weight progress with smart analytics.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/gym.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <script type="module" crossorigin="" src="/assets/index-DUc0RyUR.js"></script>
-    <link rel="stylesheet" crossorigin="" href="/assets/index-BOzdqsc7.css">
-  </head>
-  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased selection:bg-emerald-500 selection:text-white min-h-screen">
-    <div id="root"><div class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-emerald-500 selection:text-white"><header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"><div class="flex items-center gap-2.5 cursor-pointer group"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity w-6 h-6 animate-pulse"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg></div><div><span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">FitTrack <span class="gradient-text-emerald">AI</span></span><span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Smart Wellness</span></div></div><nav class="hidden lg:flex items-center gap-1"><button class="px-3 py-2 rounded-xl text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="b7r8n">Home</button><button class="px-3 py-2 rounded-xl text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="xcys8b">Dashboard</button><div class="relative"><button class="px-3 py-2 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="f6sab">Calculators <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button class="px-3 py-2 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="3sm6t">Trackers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4"><path d="m6 9 6 6 6-6"></path></svg></button></div><button class="px-3 py-2 rounded-xl text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="w9qvb">Analytics</button><button class="px-3 py-2 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" fdprocessedid="op95gn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> Find Gyms</button><button class="px-3 py-2 rounded-xl text-sm font-semibold transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="0fogby">About &amp; FAQ</button></nav><div class="flex items-center gap-2 sm:gap-3"><div title="Current Workout Streak" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 to-orange-500/15 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame w-4 h-4 fill-amber-500 text-amber-500 animate-bounce"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg><span>7 Days</span></div><button class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors" title="Search features" fdprocessedid="ou4l9"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search w-5 h-5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button><button class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors" title="Toggle theme" fdprocessedid="qw9ok"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun w-5 h-5 text-amber-400"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button><div class="relative"><button class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors relative" title="Notifications" fdprocessedid="8ezazb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell w-5 h-5"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white dark:ring-slate-950 animate-pulse"></span></button></div><button class="px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-2 border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20" fdprocessedid="l4413"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in w-4 h-4"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" x2="3" y1="12" y2="12"></line></svg><span class="hidden sm:inline">Account</span></button><div class="flex items-center gap-2 cursor-pointer p-1 rounded-xl hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all" title="User Profile Settings"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=300&amp;q=80" alt="Alex Johnson" class="w-9 h-9 rounded-full object-cover ring-2 ring-emerald-500/50"></div><button class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></div></header><main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 min-h-[calc(100vh-16rem)]"><div class="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-300"><div class="text-center space-y-3"><div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 animate-bounce"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> Fitness Center Locator</div><h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Find Nearby Gyms &amp; Studios</h1><p class="text-sm text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Discover top-rated fitness centers, crossfit boxes, and yoga studios near your current location. Book trial passes and view amenities.</p></div><div class="
-        relative overflow-hidden rounded-2xl p-6
-        bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
-        border border-slate-200/70 dark:border-slate-800/80
-        shadow-sm hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        
-        space-y-4
-      "><div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500 opacity-60"></div><div class="grid grid-cols-1 md:grid-cols-4 gap-3"><div class="md:col-span-2 relative"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 text-emerald-500 absolute left-3.5 top-3.5"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><input type="text" placeholder="Enter city or zip code..." class="w-full glass-input pl-10 pr-4 py-3 text-xs font-bold" value="Downtown Health District" fdprocessedid="7b0rtg"></div><div class="relative"><select class="w-full glass-input px-4 py-3 text-xs font-bold" fdprocessedid="tko2vr"><option value="2">Within 2 km radius</option><option value="5">Within 5 km radius</option><option value="10">Within 10 km radius</option><option value="20">Within 20 km radius</option></select></div><button class="py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 disabled:cursor-wait text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2" fdprocessedid="vawken"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation w-4 h-4"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>Use Current GPS</button></div><div class="flex items-center gap-2 overflow-x-auto pt-2 border-t border-slate-200/60 dark:border-slate-800/60"><span class="text-xs font-bold text-slate-400 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter w-3.5 h-3.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Amenities:</span><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-emerald-500 text-white shadow-sm" fdprocessedid="d6p98i4">All</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="jee02o">24/7 Access</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="pz7mxc">Free Weights</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="enfbph">Swimming Pool</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="mgwkq">Sauna</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="7uxgz">Yoga Studio</button><button class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500" fdprocessedid="tvt89">Personal Trainers</button></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="
-        relative overflow-hidden rounded-2xl p-6
-        bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
-        border border-slate-200/70 dark:border-slate-800/80
-        shadow-sm hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        
-        p-0 overflow-hidden space-y-0 group hover:border-emerald-500/50
-      "><div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500 opacity-60"></div><div class="relative h-48 w-full overflow-hidden"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Iron Forge Power &amp; Fitness Club" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div><div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation w-3 h-3 text-emerald-400"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> 1.2 km away</div><button class="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white hover:text-amber-400 transition-colors" fdprocessedid="jv41kj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-check w-4 h-4 text-amber-400"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"></path><path d="m9 10 2 2 4-4"></path></svg></button><div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white"><div class="flex items-center gap-1 text-xs font-bold bg-amber-500/90 text-slate-950 px-2.5 py-0.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-3.5 h-3.5 fill-slate-950"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> 4.9 (248)</div><span class="text-sm font-extrabold text-emerald-400 bg-slate-950/80 px-2.5 py-0.5 rounded-full">$45/mo</span></div></div><div class="p-5 space-y-3"><div><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Iron Forge Power &amp; Fitness Club</h3><p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5 text-slate-400 flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> 450 Fitness Ave, Suite 100, Downtown</p></div><div class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3.5 h-3.5 text-emerald-500"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Open Now • Closes 11:00 PM</div><div class="flex flex-wrap gap-1.5 pt-1"><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ 24/7 Access</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Free Weights</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Sauna</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Personal Trainers</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Cardio Deck</span></div><div class="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 grid grid-cols-2 gap-2 text-xs font-bold"><button class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center gap-1.5 transition-all shadow-md" fdprocessedid="39am4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Free Day Pass</button><a href="https://maps.google.com/?q=Iron%20Forge%20Power%20%26%20Fitness%20Club%20450%20Fitness%20Ave%2C%20Suite%20100%2C%20Downtown" target="_blank" rel="noreferrer" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-all border border-slate-200 dark:border-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 text-emerald-500"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg> Directions</a></div></div></div><div class="
-        relative overflow-hidden rounded-2xl p-6
-        bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
-        border border-slate-200/70 dark:border-slate-800/80
-        shadow-sm hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        
-        p-0 overflow-hidden space-y-0 group hover:border-emerald-500/50
-      "><div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500 opacity-60"></div><div class="relative h-48 w-full overflow-hidden"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Pulse Peak High Performance Gym" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div><div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation w-3 h-3 text-emerald-400"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> 2.8 km away</div><button class="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white hover:text-amber-400 transition-colors" fdprocessedid="7hpdpe"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark w-4 h-4"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg></button><div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white"><div class="flex items-center gap-1 text-xs font-bold bg-amber-500/90 text-slate-950 px-2.5 py-0.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-3.5 h-3.5 fill-slate-950"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> 4.8 (182)</div><span class="text-sm font-extrabold text-emerald-400 bg-slate-950/80 px-2.5 py-0.5 rounded-full">$39/mo</span></div></div><div class="p-5 space-y-3"><div><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Pulse Peak High Performance Gym</h3><p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5 text-slate-400 flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> 880 Olympic Blvd, West End</p></div><div class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3.5 h-3.5 text-emerald-500"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Open Now • 24/7 Access</div><div class="flex flex-wrap gap-1.5 pt-1"><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Swimming Pool</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Sauna</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Crossfit Box</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Juice Bar</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Yoga Studio</span></div><div class="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 grid grid-cols-2 gap-2 text-xs font-bold"><button class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center gap-1.5 transition-all shadow-md" fdprocessedid="u9chd"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Free Day Pass</button><a href="https://maps.google.com/?q=Pulse%20Peak%20High%20Performance%20Gym%20880%20Olympic%20Blvd%2C%20West%20End" target="_blank" rel="noreferrer" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-all border border-slate-200 dark:border-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 text-emerald-500"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg> Directions</a></div></div></div><div class="
-        relative overflow-hidden rounded-2xl p-6
-        bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
-        border border-slate-200/70 dark:border-slate-800/80
-        shadow-sm hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        
-        p-0 overflow-hidden space-y-0 group hover:border-emerald-500/50
-      "><div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500 opacity-60"></div><div class="relative h-48 w-full overflow-hidden"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Vibe Yoga &amp; Functional Athletics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div><div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation w-3 h-3 text-emerald-400"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> 3.5 km away</div><button class="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white hover:text-amber-400 transition-colors" fdprocessedid="e71sxn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark w-4 h-4"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg></button><div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white"><div class="flex items-center gap-1 text-xs font-bold bg-amber-500/90 text-slate-950 px-2.5 py-0.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-3.5 h-3.5 fill-slate-950"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> 4.9 (135)</div><span class="text-sm font-extrabold text-emerald-400 bg-slate-950/80 px-2.5 py-0.5 rounded-full">$55/mo</span></div></div><div class="p-5 space-y-3"><div><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Vibe Yoga &amp; Functional Athletics</h3><p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5 text-slate-400 flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> 124 Horizon Way, Green Park</p></div><div class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3.5 h-3.5 text-emerald-500"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Open Now • Closes 9:00 PM</div><div class="flex flex-wrap gap-1.5 pt-1"><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Yoga Studio</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Pilates Reformer</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Steam Room</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Personal Trainers</span></div><div class="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 grid grid-cols-2 gap-2 text-xs font-bold"><button class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center gap-1.5 transition-all shadow-md" fdprocessedid="9no4vs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Free Day Pass</button><a href="https://maps.google.com/?q=Vibe%20Yoga%20%26%20Functional%20Athletics%20124%20Horizon%20Way%2C%20Green%20Park" target="_blank" rel="noreferrer" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-all border border-slate-200 dark:border-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 text-emerald-500"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg> Directions</a></div></div></div><div class="
-        relative overflow-hidden rounded-2xl p-6
-        bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
-        border border-slate-200/70 dark:border-slate-800/80
-        shadow-sm hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        
-        p-0 overflow-hidden space-y-0 group hover:border-emerald-500/50
-      "><div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500 opacity-60"></div><div class="relative h-48 w-full overflow-hidden"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Titan Strength &amp; Conditioning Arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div><div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-navigation w-3 h-3 text-emerald-400"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg> 4.7 km away</div><button class="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 backdrop-blur-md text-white hover:text-amber-400 transition-colors" fdprocessedid="5jtp87"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark w-4 h-4"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg></button><div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white"><div class="flex items-center gap-1 text-xs font-bold bg-amber-500/90 text-slate-950 px-2.5 py-0.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-3.5 h-3.5 fill-slate-950"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg> 4.7 (310)</div><span class="text-sm font-extrabold text-emerald-400 bg-slate-950/80 px-2.5 py-0.5 rounded-full">$30/mo</span></div></div><div class="p-5 space-y-3"><div><h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-500 transition-colors">Titan Strength &amp; Conditioning Arena</h3><p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3.5 h-3.5 text-slate-400 flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> 720 Powerhouse Rd, Industrial District</p></div><div class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-3.5 h-3.5 text-emerald-500"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Open Now • Closes 10:00 PM</div><div class="flex flex-wrap gap-1.5 pt-1"><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Free Weights</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Crossfit Box</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Heavy Racks</span><span class="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-600 dark:text-slate-300">✓ Lockers</span></div><div class="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 grid grid-cols-2 gap-2 text-xs font-bold"><button class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center gap-1.5 transition-all shadow-md" fdprocessedid="ypv9p3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> Free Day Pass</button><a href="https://maps.google.com/?q=Titan%20Strength%20%26%20Conditioning%20Arena%20720%20Powerhouse%20Rd%2C%20Industrial%20District" target="_blank" rel="noreferrer" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1.5 transition-all border border-slate-200 dark:border-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 text-emerald-500"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg> Directions</a></div></div></div></div></div></main><footer class="mt-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-950/50 backdrop-blur-xl pt-12 pb-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12"><div class="space-y-4 md:col-span-1"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-500 flex items-center justify-center text-white shadow-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity w-5 h-5"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg></div><span class="text-lg font-bold text-slate-900 dark:text-white">FitTrack <span class="gradient-text-emerald">AI</span></span></div><p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Your AI-powered personal health companion. Track calories, steps, workouts, weight goals, and hydration with intelligent visual analytics.</p><div class="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg> Continuous AI Health Insights</div></div><div class="space-y-3"><h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Navigation</h4><ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400"><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="24th3k">Home Page</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="p1upba">Personal Dashboard</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="06jyi">Find Nearby Gyms</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="tzuabc">Progress Analytics</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="fgvznc">User Profile Settings</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="dfigeh">About &amp; FAQ</button></li></ul></div><div class="space-y-3"><h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Health Tools</h4><ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400"><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="eololq">BMI Calculator</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="74hf6k">Water Intake Calculator</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="u1ce2c">Calorie &amp; Macro Calculator</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="v3jw8h">Workout Logger</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="yumq1t">Step Counter</button></li><li><button class="hover:text-emerald-500 transition-colors" fdprocessedid="xtqzhc">Diet Planner</button></li></ul></div><div class="space-y-3"><h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Daily Health Digest</h4><p class="text-xs text-slate-500 dark:text-slate-400">Subscribe to receive weekly meal plans, exercise guides, and motivation directly to your inbox.</p><form class="flex items-center gap-1.5"><input type="email" placeholder="Enter email address" class="w-full glass-input px-3 py-2 text-xs" required="" fdprocessedid="j9zvjl"><button type="submit" class="p-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-colors" fdprocessedid="t84vvb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-4 h-4"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg></button></form></div></div><div class="pt-6 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400"><div class="flex items-center gap-1"><span>© 2026 FitTrack AI Inc. Built with</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-3.5 h-3.5 text-rose-500 fill-rose-500"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><span>for optimal health.</span></div><div class="flex items-center gap-4"><span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-3.5 h-3.5 text-emerald-500"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg> Privacy Shield Verified</span><span>Terms of Service</span></div></div></div></footer></div></div>
-  
+<!DOCTYPE html>
+<html lang="en">
 
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nearby Gyms</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/gym.css') }}">
+</head>
+
+<body>
+
+    {% include "_sidebar.html" %}
+
+    <main class="main-content">
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <button class="nav-toggle app-nav-toggle"
+                    id="sidebarToggle"
+                    aria-label="Toggle menu">
+                ☰
+            </button>
+
+            <h1>Nearby Gyms</h1>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="tracker-section active">
+
+            <div class="card">
+
+                <div class="page-heading">
+                    <h2>🏋️ Find Nearby Gyms</h2>
+
+                    <p style="color: white;">
+                        Explore gyms around your area and find the right
+                        place for your fitness journey.
+                    </p>
+                </div>
+
+
+                <!-- ================= SEARCH ================= -->
+
+                <div class="gym-search">
+
+                    <input
+                        type="text"
+                        id="gymSearch"
+                        placeholder="🔍 Search gym by name or location..."
+                        onkeyup="searchGyms()">
+
+                </div>
+
+
+                <!-- ================= FILTERS ================= -->
+
+                <div class="gym-filters">
+
+                    <button class="filter-btn active"
+                            onclick="filterGyms('all', this)">
+                        All
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterGyms('weight-loss', this)">
+                        Weight Loss
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterGyms('muscle-gain', this)">
+                        Muscle Gain
+                    </button>
+
+                    <button class="filter-btn"
+                            onclick="filterGyms('cardio', this)">
+                        Cardio
+                    </button>
+
+                </div>
+
+
+                <!-- ================= GYM LIST ================= -->
+
+                <div class="gym-grid" id="gymGrid">
+
+
+                    <!-- GYM 1 -->
+
+                    <div class="gym-card"
+                         data-name="fitzone fitness"
+                         data-location="jayanagar bengaluru"
+                         data-category="muscle-gain">
+
+                        <div class="gym-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1689877020200-403d8542d95d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGd5bXxlbnwwfHwwfHx8MA%3D%3D"
+                                alt="FitZone Fitness">
+
+                            <span class="gym-rating">
+                                ⭐ 4.6
+                            </span>
+
+                        </div>
+
+
+                        <div class="gym-info">
+
+                            <h3>FitZone Fitness</h3>
+
+                            <p class="gym-location">
+                                📍 Jayanagar, Bengaluru
+                            </p>
+
+                            <p class="gym-distance">
+                                📏 1.2 km away
+                            </p>
+
+                            <p class="gym-address">
+                                4th Block, Jayanagar,
+                                Bengaluru, Karnataka 560011
+                            </p>
+
+
+                            <div class="gym-details">
+
+                                <span>💰 ₹1500/month</span>
+
+                                <span>🕐 5:30 AM - 10 PM</span>
+
+                            </div>
+
+
+                            <div class="gym-tags">
+
+                                <span>Weights</span>
+                                <span>Cardio</span>
+                                <span>CrossFit</span>
+
+                            </div>
+
+
+                            <div class="gym-actions">
+
+                                <button class="btn btn-primary"
+                                    onclick="getDirections(
+                                    'FitZone Fitness, 4th Block, Jayanagar, Bengaluru, Karnataka 560011'
+                                    )">
+
+                                    📍 Get Directions
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GYM 2 -->
+
+                    <div class="gym-card"
+                         data-name="powerhouse gym"
+                         data-location="btm layout bengaluru"
+                         data-category="muscle-gain">
+
+                        <div class="gym-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1728486145245-d4cb0c9c3470?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGd5bXxlbnwwfHwwfHx8MA%3D%3D"
+                                alt="PowerHouse Gym">
+
+                            <span class="gym-rating">
+                                ⭐ 4.4
+                            </span>
+
+                        </div>
+
+
+                        <div class="gym-info">
+
+                            <h3>PowerHouse Gym</h3>
+
+                            <p class="gym-location">
+                                📍 BTM Layout, Bengaluru
+                            </p>
+
+                            <p class="gym-distance">
+                                📏 2.1 km away
+                            </p>
+
+                            <p class="gym-address">
+                                2nd Stage, BTM Layout,
+                                Bengaluru, Karnataka 560029
+                            </p>
+
+
+                            <div class="gym-details">
+
+                                <span>💰 ₹1200/month</span>
+
+                                <span>🕐 6:00 AM - 10 PM</span>
+
+                            </div>
+
+
+                            <div class="gym-tags">
+
+                                <span>Weights</span>
+                                <span>Strength</span>
+                                <span>Cardio</span>
+
+                            </div>
+
+
+                            <div class="gym-actions">
+
+                                <button class="btn btn-primary"
+                                    onclick="getDirections(
+                                    'PowerHouse Gym, 2nd Stage, BTM Layout, Bengaluru, Karnataka 560029'
+                                    )">
+
+                                    📍 Get Directions
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GYM 3 -->
+
+                    <div class="gym-card"
+                         data-name="fitness first"
+                         data-location="koramangala bengaluru"
+                         data-category="cardio">
+
+                        <div class="gym-image">
+
+                            <img
+                                src="https://media.istockphoto.com/id/1332405544/photo/asian-indian-mid-adult-macho-man-practicing-battle-rope-in-gym.webp?a=1&b=1&s=612x612&w=0&k=20&c=RO0D7O1bfmJ5Ml_-sO6cjdTJ6l8-hvTvYCzrvnw7cfc="
+                                alt="Fitness First">
+
+                            <span class="gym-rating">
+                                ⭐ 4.7
+                            </span>
+
+                        </div>
+
+
+                        <div class="gym-info">
+
+                            <h3>Fitness First</h3>
+
+                            <p class="gym-location">
+                                📍 Koramangala, Bengaluru
+                            </p>
+
+                            <p class="gym-distance">
+                                📏 3.4 km away
+                            </p>
+
+                            <p class="gym-address">
+                                5th Block, Koramangala,
+                                Bengaluru, Karnataka 560095
+                            </p>
+
+
+                            <div class="gym-details">
+
+                                <span>💰 ₹1800/month</span>
+
+                                <span>🕐 5:00 AM - 11 PM</span>
+
+                            </div>
+
+
+                            <div class="gym-tags">
+
+                                <span>Cardio</span>
+                                <span>Zumba</span>
+                                <span>Yoga</span>
+
+                            </div>
+
+
+                            <div class="gym-actions">
+
+                                <button class="btn btn-primary"
+                                    onclick="getDirections(
+                                    'Fitness First, 5th Block, Koramangala, Bengaluru, Karnataka 560095'
+                                    )">
+
+                                    📍 Get Directions
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GYM 4 -->
+
+                    <div class="gym-card"
+                         data-name="strong body fitness"
+                         data-location="rajajinagar bengaluru"
+                         data-category="weight-loss">
+
+                        <div class="gym-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1625334583355-463900ec13df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGd5bSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D"
+                                alt="Strong Body Fitness">
+
+                            <span class="gym-rating">
+                                ⭐ 4.5
+                            </span>
+
+                        </div>
+
+
+                        <div class="gym-info">
+
+                            <h3>Strong Body Fitness</h3>
+
+                            <p class="gym-location">
+                                📍 Rajajinagar, Bengaluru
+                            </p>
+
+                            <p class="gym-distance">
+                                📏 4.2 km away
+                            </p>
+
+                            <p class="gym-address">
+                                1st Block, Rajajinagar,
+                                Bengaluru, Karnataka 560010
+                            </p>
+
+
+                            <div class="gym-details">
+
+                                <span>💰 ₹1000/month</span>
+
+                                <span>🕐 6:00 AM - 9:30 PM</span>
+
+                            </div>
+
+
+                            <div class="gym-tags">
+
+                                <span>Weight Loss</span>
+                                <span>Cardio</span>
+                                <span>Training</span>
+
+                            </div>
+
+
+                            <div class="gym-actions">
+
+                                <button class="btn btn-primary"
+                                    onclick="getDirections(
+                                    'Strong Body Fitness, 1st Block, Rajajinagar, Bengaluru, Karnataka 560010'
+                                    )">
+
+                                    📍 Get Directions
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NO RESULTS -->
+
+                <div id="noGyms"
+                     class="no-gyms"
+                     style="display:none;">
+
+                    <h3>😕 No gyms found</h3>
+
+                    <p>
+                        Try searching with another gym name or location.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ==========================================
+           OPEN GOOGLE MAPS
+        ========================================== */
+
+        function getDirections(address) {
+
+            const mapsURL =
+                "https://www.google.com/maps/search/?api=1&query="
+                + encodeURIComponent(address);
+
+            window.open(mapsURL, "_blank");
+        }
+
+
+        /* ==========================================
+           SEARCH GYMS
+        ========================================== */
+
+        function searchGyms() {
+
+            const search =
+                document
+                .getElementById("gymSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const gyms =
+                document.querySelectorAll(".gym-card");
+
+            let visibleCount = 0;
+
+            gyms.forEach(function(gym) {
+
+                const name =
+                    gym.dataset.name;
+
+                const location =
+                    gym.dataset.location;
+
+                if (
+                    name.includes(search) ||
+                    location.includes(search)
+                ) {
+
+                    gym.style.display = "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    gym.style.display = "none";
+
+                }
+
+            });
+
+
+            document.getElementById("noGyms").style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+
+        /* ==========================================
+           FILTER GYMS
+        ========================================== */
+
+        function filterGyms(category, button) {
+
+            const gyms =
+                document.querySelectorAll(".gym-card");
+
+            const buttons =
+                document.querySelectorAll(".filter-btn");
+
+
+            buttons.forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+
+            let visibleCount = 0;
+
+
+            gyms.forEach(function(gym) {
+
+                if (
+                    category === "all" ||
+                    gym.dataset.category === category
+                ) {
+
+                    gym.style.display = "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    gym.style.display = "none";
+
+                }
+
+            });
+
+
+            document.getElementById("noGyms").style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+    </script>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
+
